@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose)
-    kotlin("plugin.serialization")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -90,5 +90,7 @@ dependencies {
     implementation(libs.kotlinx.serialization)
 
     implementation(libs.navigation.compose)
+
+    implementation("androidx.compose.material:material-icons-extended:1.6.6")
 
 }

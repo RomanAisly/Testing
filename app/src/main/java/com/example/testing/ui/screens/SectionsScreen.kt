@@ -11,11 +11,11 @@ import androidx.compose.ui.graphics.Color
 import com.example.testing.domain.navigation.NavScreens
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, navigateTo: (NavScreens) -> Unit) {
+fun SectionsScreen(modifier: Modifier = Modifier, navigateTo: (NavScreens) -> Unit) {
     Column(
         modifier
             .fillMaxSize()
-            .background(Color.Green),
+            .background(Color.Red),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -18,7 +18,7 @@ okhttp = "4.12.0"
 ksp = "2.0.0-1.0.21"
 glide = "4.16.0"
 kotlinSerialization = "1.6.3"
-navigation = "2.8.0-beta06"
+navigation = "2.7.7"
 
 
 [libraries]
@@ -57,4 +57,5 @@ jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "k
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinCompose" }
+kotlin-serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
 

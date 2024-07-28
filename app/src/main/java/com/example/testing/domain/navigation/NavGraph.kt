@@ -5,9 +5,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.testing.ui.screens.LoginScreen
-import com.example.testing.ui.screens.MainScreen
-import com.example.testing.ui.screens.RegisterScreen
+import com.example.testing.ui.screens.SectionsScreen
+import com.example.testing.ui.screens.HomeScreen
+import com.example.testing.ui.screens.SettingsScreen
 
 @Composable
 fun NavGraph(
@@ -17,23 +17,18 @@ fun NavGraph(
     NavHost(
         modifier = modifier,
         navController = navHostController,
-        startDestination = NavScreens.LoginScreen
+        startDestination = NavScreens.HomeScreen.route
     ) {
-        composable<NavScreens.LoginScreen> {
-            LoginScreen {
-                navHostController.navigate(it)
-            }
+        composable(route = NavScreens.HomeScreen.route) {
+            HomeScreen {}
         }
-        composable<NavScreens.RegisterScreen> {
-            RegisterScreen {
-                navHostController.navigate(it)
-            }
+        composable(route = NavScreens.SectionsScreen.route) {
+            SectionsScreen {}
         }
-        composable<NavScreens.MainScreen> {
-            MainScreen {
-                navHostController.navigate(it)
-            }
+        composable(route = NavScreens.SettingsScreen.route) {
+            SettingsScreen {}
         }
+
     }
 }
 

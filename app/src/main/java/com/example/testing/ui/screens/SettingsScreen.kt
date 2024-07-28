@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.testing.domain.navigation.NavScreens
 
 @Composable
-fun RegisterScreen(modifier: Modifier = Modifier, navigateTo: (NavScreens) -> Unit) {
+fun SettingsScreen(modifier: Modifier = Modifier, navigateTo: (NavScreens) -> Unit) {
     Column(
         modifier
             .fillMaxSize()
