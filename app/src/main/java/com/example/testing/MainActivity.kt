@@ -11,7 +11,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.testing.domain.navigation.BottomBar
 import com.example.testing.domain.navigation.NavGraph
 import com.example.testing.ui.theme.TestingTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Testing</string>
+    <string name="app_name">Sport Scan</string>
     <string name="bottom_nav_item_home">Home</string>
     <string name="bottom_nav_item_sections">Sections</string>
     <string name="bottom_nav_item_settings">Settings</string>
