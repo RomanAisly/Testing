@@ -18,7 +18,7 @@ import com.example.testing.R
 import com.example.testing.domain.navigation.NavScreens
 
 @Composable
-fun HomeScreen(navigateTo: (NavScreens) -> Unit) {
+fun HomeScreen() {
     Image(
         painter = painterResource(id = R.drawable.home_screen_wallpaper), contentDescription = "",
         modifier = Modifier.fillMaxSize(),

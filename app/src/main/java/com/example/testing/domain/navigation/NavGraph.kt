@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.testing.ui.screens.DetailsScreen
 import com.example.testing.ui.screens.SectionsScreen
 import com.example.testing.ui.screens.HomeScreen
 import com.example.testing.ui.screens.SettingsScreen
@@ -20,13 +21,16 @@ fun NavGraph(
         startDestination = NavScreens.HomeScreen.route
     ) {
         composable(route = NavScreens.HomeScreen.route) {
-            HomeScreen {}
+            HomeScreen()
         }
         composable(route = NavScreens.SectionsScreen.route) {
-            SectionsScreen {}
+            SectionsScreen(navHostController)
         }
         composable(route = NavScreens.SettingsScreen.route) {
-            SettingsScreen {}
+            SettingsScreen()
+        }
+        composable(route = NavScreens.DetailsScreen.route) {
+            DetailsScreen()
         }
 
     }

@@ -14,7 +14,7 @@ import com.example.testing.R
 import com.example.testing.domain.navigation.NavScreens
 
 @Composable
-fun SettingsScreen(navigateTo: (NavScreens) -> Unit) {
+fun SettingsScreen() {
 
     Column(
         modifier = Modifier

@@ -2,6 +2,7 @@ package com.example.testing.domain.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Details
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Sports
@@ -15,4 +16,7 @@ sealed class NavScreens(@StringRes val title: Int, val icon: ImageVector, val ro
 
     data object SettingsScreen :
         NavScreens(R.string.bottom_nav_item_settings, Icons.Default.Settings, "settings")
+
+    data object DetailsScreen :
+        NavScreens(R.string.bottom_nav_item_details, Icons.Default.Details, "details")
 }
