@@ -30,13 +30,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CustomAnimScaling(modifier: Modifier = Modifier) {
-
-    Spacer(
-        modifier
-            .fillMaxWidth()
-            .height(35.dp)
-    )
-
     Column(
         modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
