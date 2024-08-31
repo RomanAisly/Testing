@@ -22,11 +22,12 @@ import com.airbnb.lottie.compose.LottieClipSpec
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.testing.R
 
 @Composable
 fun LottieAnim(modifier: Modifier = Modifier) {
 
-    val lottieComposition by rememberLottieComposition(spec = LottieCompositionSpec.Asset("downloading.json"))
+    val lottieComposition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.downloading))
     var isPlaying by remember {
         mutableStateOf(false)
 
@@ -39,7 +40,7 @@ fun LottieAnim(modifier: Modifier = Modifier) {
         if (isComplete) {
             1f
         } else {
-            0.9f
+            0.6f
         }
     )
 

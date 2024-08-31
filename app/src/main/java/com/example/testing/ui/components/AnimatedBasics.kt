@@ -2,12 +2,13 @@ package com.example.testing.ui.components
 
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
@@ -39,11 +42,14 @@ fun CustomAnimScaling(modifier: Modifier = Modifier) {
             mutableStateOf(false)
         }
 
+        val transition = rememberInfiniteTransition()
+        val transition2 = updateTransition(targetState = isVisible)
+
         val animeSize by animateDpAsState(
             targetValue = if (isVisible) 300.dp else 100.dp,
             animationSpec = spring(
-                dampingRatio = 0.3f,
-                stiffness = 16f
+                dampingRatio = Spring.DampingRatioMediumBouncy,
+                stiffness = Spring.StiffnessLow
             )
 
 
@@ -53,8 +59,7 @@ fun CustomAnimScaling(modifier: Modifier = Modifier) {
             targetValue =
             if (isVisible) 300.dp else 0.dp,
             animationSpec = tween(
-                durationMillis = 900,
-                easing = FastOutSlowInEasing
+                durationMillis = 1600
             )
         )
 
@@ -62,12 +67,10 @@ fun CustomAnimScaling(modifier: Modifier = Modifier) {
             targetValue =
             if (isVisible) Color.Red else Color.Green,
             animationSpec = tween(
-                durationMillis = 900,
-                easing = FastOutSlowInEasing
+                durationMillis = 1600
             )
         )
 
-        val transition = rememberInfiniteTransition()
         val transColor by transition.animateColor(
             initialValue = Color.Red,
             targetValue = Color.Blue,
@@ -91,6 +94,7 @@ fun CustomAnimScaling(modifier: Modifier = Modifier) {
         Column(
             modifier
                 .size(animeSize)
+                .clip(RoundedCornerShape(animCorners))
                 .background(animColor),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

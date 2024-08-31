@@ -1,18 +1,21 @@
 package com.example.testing.ui.components
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -31,7 +34,6 @@ import androidx.compose.ui.unit.dp
 fun CustomAnimVisibility(modifier: Modifier = Modifier) {
     Column(
         modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -39,27 +41,39 @@ fun CustomAnimVisibility(modifier: Modifier = Modifier) {
             mutableStateOf(false)
         }
 
-        Button(onClick = { isVisible = !isVisible }) {
+        Button(
+            onClick = { isVisible = !isVisible },
+            modifier.padding(top = 20.dp)
+        ) {
             Text(text = "Click")
         }
-
-        Spacer(
-            modifier
-                .fillMaxWidth()
-                .height(35.dp)
-        )
 
         Column(
             modifier
                 .size(300.dp)
+                .padding(top = 30.dp)
                 .background(Color.Cyan),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             AnimatedVisibility(
                 visible = isVisible,
-                enter = fadeIn() + slideInVertically(),
-                exit = fadeOut() + slideOutVertically()
+                enter = fadeIn() + slideInHorizontally(
+                    initialOffsetX = {
+                        it
+                    },
+                    animationSpec = tween(
+                        durationMillis = 1500
+                    ),
+                ),
+                exit = fadeOut() + slideOutHorizontally(
+                    targetOffsetX = {
+                        -it
+                    },
+                    animationSpec = tween(
+                        durationMillis = 1500
+                    )
+                )
 
             ) {
                 Box(
@@ -67,6 +81,44 @@ fun CustomAnimVisibility(modifier: Modifier = Modifier) {
                         .size(200.dp)
                         .background(Color.Red)
                 )
+            }
+        }
+
+        Column(
+            modifier
+                .size(300.dp)
+                .padding(top = 30.dp)
+                .background(Color.Cyan),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            AnimatedContent(
+                targetState = isVisible,
+                modifier
+                    .size(260.dp),
+                transitionSpec = {
+                    (fadeIn() + slideInHorizontally(
+                        animationSpec =
+                        tween(durationMillis = 1500),
+                        initialOffsetX = {
+                            it
+                        }
+                    )).togetherWith(
+                        fadeOut() + slideOutHorizontally(
+                            animationSpec =
+                            tween(durationMillis = 1500),
+                            targetOffsetX = {
+                                -it
+                            }
+                        )
+                    )
+                }
+            ) {
+                if (it) {
+                    Box(modifier.background(Color.Green))
+                } else {
+                    Box(modifier.background(Color.Yellow))
+                }
             }
         }
     }

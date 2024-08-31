@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.testing.ui.components.LottieAnim
+import com.example.testing.ui.components.CustomAnimVisibility
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
@@ -19,6 +19,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        LottieAnim()
+        CustomAnimVisibility()
     }
 }
