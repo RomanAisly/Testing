@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,59 +30,64 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CustomAnimScaling(modifier: Modifier = Modifier) {
+fun CustomAnim(modifier: Modifier = Modifier) {
+
+    var isVisible by remember {
+        mutableStateOf(false)
+    }
+
+    val transition = rememberInfiniteTransition()
+    val transition2 = updateTransition(targetState = isVisible)
+
+    val animeSize by animateDpAsState(
+        targetValue = if (isVisible) 300.dp else 100.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        )
+    )
+
+    val animCorners by animateDpAsState(
+        targetValue =
+        if (isVisible) 300.dp else 0.dp,
+        animationSpec = tween(
+            durationMillis = 1600
+        )
+    )
+
+    val animColor by animateColorAsState(
+        targetValue =
+        if (isVisible) Color.Red else Color.Green,
+        animationSpec = tween(
+            durationMillis = 1600
+        )
+    )
+
+    val transColor by transition.animateColor(
+        initialValue = Color.Red,
+        targetValue = Color.Blue,
+        animationSpec = infiniteRepeatable(
+            tween(durationMillis = 2000)
+        )
+    )
+
     Column(
         modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        var isVisible by remember {
-            mutableStateOf(false)
-        }
-
-        val transition = rememberInfiniteTransition()
-        val transition2 = updateTransition(targetState = isVisible)
-
-        val animeSize by animateDpAsState(
-            targetValue = if (isVisible) 300.dp else 100.dp,
-            animationSpec = spring(
-                dampingRatio = Spring.DampingRatioMediumBouncy,
-                stiffness = Spring.StiffnessLow
+        Button(
+            onClick = {
+                isVisible = !isVisible
+            },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = transColor
             )
-
-
-        )
-
-        val animCorners by animateDpAsState(
-            targetValue =
-            if (isVisible) 300.dp else 0.dp,
-            animationSpec = tween(
-                durationMillis = 1600
-            )
-        )
-
-        val animColor by animateColorAsState(
-            targetValue =
-            if (isVisible) Color.Red else Color.Green,
-            animationSpec = tween(
-                durationMillis = 1600
-            )
-        )
-
-        val transColor by transition.animateColor(
-            initialValue = Color.Red,
-            targetValue = Color.Blue,
-            animationSpec = infiniteRepeatable(
-                tween(durationMillis = 2000)
-            )
-        )
-
-        Button(onClick = {
-            isVisible = !isVisible
-        }) {
+        ) {
             Text(text = "Click")
         }
 
@@ -98,8 +104,12 @@ fun CustomAnimScaling(modifier: Modifier = Modifier) {
                 .background(animColor),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-        ) {
-
-        }
+        ) {}
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    CustomAnim()
 }

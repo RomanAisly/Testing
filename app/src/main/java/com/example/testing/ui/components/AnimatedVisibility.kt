@@ -27,7 +27,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -42,8 +41,7 @@ fun CustomAnimVisibility(modifier: Modifier = Modifier) {
         }
 
         Button(
-            onClick = { isVisible = !isVisible },
-            modifier.padding(top = 20.dp)
+            onClick = { isVisible = !isVisible }
         ) {
             Text(text = "Click")
         }
@@ -51,7 +49,6 @@ fun CustomAnimVisibility(modifier: Modifier = Modifier) {
         Column(
             modifier
                 .size(300.dp)
-                .padding(top = 30.dp)
                 .background(Color.Cyan),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -59,22 +56,14 @@ fun CustomAnimVisibility(modifier: Modifier = Modifier) {
             AnimatedVisibility(
                 visible = isVisible,
                 enter = fadeIn() + slideInHorizontally(
-                    initialOffsetX = {
-                        it
-                    },
-                    animationSpec = tween(
-                        durationMillis = 1500
+                    spring(
+                        dampingRatio = Spring.DampingRatioMediumBouncy,
+                        stiffness = Spring.StiffnessLow
                     ),
-                ),
-                exit = fadeOut() + slideOutHorizontally(
-                    targetOffsetX = {
-                        -it
-                    },
-                    animationSpec = tween(
-                        durationMillis = 1500
-                    )
-                )
+                    initialOffsetX = { -it }),
 
+                exit = fadeOut() + slideOutHorizontally(
+                    targetOffsetX = { it })
             ) {
                 Box(
                     modifier
@@ -122,11 +111,4 @@ fun CustomAnimVisibility(modifier: Modifier = Modifier) {
             }
         }
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-private fun Preview() {
-    CustomAnimVisibility()
 }
