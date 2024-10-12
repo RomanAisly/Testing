@@ -19,7 +19,7 @@ hilt = "2.51.1"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 ksp = "2.0.20-1.0.24"
-glide = "4.16.0"
+coil = "2.7.0"
 kotlinSerialization = "1.7.1"
 navigation = "2.8.2"
 
@@ -48,7 +48,7 @@ lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converterJson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }

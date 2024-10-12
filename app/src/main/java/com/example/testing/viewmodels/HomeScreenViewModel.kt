@@ -31,14 +31,14 @@ class HomeScreenViewModel @Inject constructor(private val usersRepositoryImp: Us
         viewModelScope.launch {
             usersRepositoryImp.getUsers().collectLatest { result ->
                 when (result) {
-                    is CheckConnection.Success -> {
-                        result.data?.let {
-                            _users.update { it }
-                        }
-                    }
-
                     is CheckConnection.Error -> {
                         _showErrorToast.send(true)
+                    }
+
+                    is CheckConnection.Success -> {
+                        result.data?.let { users ->
+                            _users.update { users }
+                        }
                     }
                 }
 

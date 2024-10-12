@@ -81,7 +81,7 @@ dependencies {
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
 
-    implementation(libs.glide)
+    implementation(libs.coil)
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.converterJson)
