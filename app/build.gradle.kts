@@ -86,6 +86,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.converterJson)
     implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
 
     implementation(libs.kotlinx.serialization)
 

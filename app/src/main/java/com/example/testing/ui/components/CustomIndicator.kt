@@ -6,13 +6,17 @@ import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -25,6 +29,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -49,6 +54,8 @@ fun CustomIndicator(
     smallText: String = "Remaining",
     smallTextColor: Color = Color.Magenta
 ) {
+
+    var value by remember { mutableStateOf(0) }
 
     var allowedIndicatorValue by remember {
         mutableIntStateOf(maxIndicatorValue)
@@ -85,35 +92,48 @@ fun CustomIndicator(
     )
 
     Column(
-        modifier = modifier
-            .size(canvasSize)
-            .drawBehind {
-                val componentSize = size / 1.25f
-                backIndicator(
-                    componentSize = componentSize,
-                    indicatorColor = backgroundIndicatorColor,
-                    indicatorStrokeWidth = backgroundIndicatorStrokeWidth,
-                    indicatorStokeCap = indicatorStokeCap
-                )
-                foreIndicator(
-                    sweepAngle = sweepAngle,
-                    componentSize = componentSize,
-                    indicatorColor = foregroundIndicatorColor,
-                    indicatorStrokeWidth = foregroundIndicatorStrokeWidth,
-                    indicatorStokeCap = indicatorStokeCap
-                )
-            },
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        EmbeddedElements(
-            bigText = receivedValue,
-            bigTextFont = 30.sp,
-            bigTextColor = animatedBigTextColor,
-            bigTextSuffix = bigTextSuffix,
-            smallText = smallText,
-            smallTextColor = smallTextColor,
-            smallTextFont = 20.sp
+
+
+        Column(
+            modifier = modifier
+                .size(canvasSize)
+                .drawBehind {
+                    val componentSize = size / 1.25f
+                    backIndicator(
+                        componentSize = componentSize,
+                        indicatorColor = backgroundIndicatorColor,
+                        indicatorStrokeWidth = backgroundIndicatorStrokeWidth,
+                        indicatorStokeCap = indicatorStokeCap
+                    )
+                    foreIndicator(
+                        sweepAngle = sweepAngle,
+                        componentSize = componentSize,
+                        indicatorColor = foregroundIndicatorColor,
+                        indicatorStrokeWidth = foregroundIndicatorStrokeWidth,
+                        indicatorStokeCap = indicatorStokeCap
+                    )
+                },
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            EmbeddedElements(
+                bigText = receivedValue,
+                bigTextFont = 30.sp,
+                bigTextColor = animatedBigTextColor,
+                bigTextSuffix = bigTextSuffix,
+                smallText = smallText,
+                smallTextColor = smallTextColor,
+                smallTextFont = 20.sp
+            )
+        }
+        TextField(
+            value = value.toString(),
+            onValueChange = { value = if (it.isNotEmpty()) it.toInt() else 0 },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
     }
 }
@@ -194,5 +214,5 @@ fun EmbeddedElements(
 @Preview(showBackground = true)
 @Composable
 private fun Preview() {
-    HomeScreen()
+    CustomIndicator()
 }
