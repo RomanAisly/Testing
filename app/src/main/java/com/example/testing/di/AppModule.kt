@@ -1,5 +1,7 @@
 package com.example.testing.di
 
+import com.example.testing.model.UsersRepository
+import com.example.testing.model.UsersRepositoryImp
 import com.example.testing.network.UsersApi
 import dagger.Module
 import dagger.Provides
@@ -29,7 +31,6 @@ object AppModule {
             .build()
     }
 
-
     @Provides
     @Singleton
     val provideUsersApi: UsersApi = Retrofit.Builder()
@@ -38,4 +39,10 @@ object AppModule {
         .client(provideOkHttpClient())
         .build()
         .create(UsersApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideUsersRepository(api: UsersApi): UsersRepository {
+        return UsersRepositoryImp(api)
+    }
 }

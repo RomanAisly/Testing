@@ -1,11 +1,10 @@
 package com.example.testing.viewmodels
 
-import androidx.activity.result.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testing.model.UsersRepository
+import com.example.testing.model.UsersRepositoryImp
 import com.example.testing.network.CheckConnection
-import com.example.testing.network.dto.Data
 import com.example.testing.network.dto.UsersDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -18,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(private val usersRepository: UsersRepository) :
+class HomeScreenViewModel @Inject constructor(private val usersRepositoryImp: UsersRepositoryImp) :
     ViewModel() {
 
     private val _users = MutableStateFlow<List<UsersDTO>>(emptyList())
@@ -29,7 +28,7 @@ class HomeScreenViewModel @Inject constructor(private val usersRepository: Users
 
     init {
         viewModelScope.launch {
-            usersRepository.getUsers().collectLatest { result ->
+            usersRepositoryImp.getUsers().collectLatest { result ->
                 when (result) {
                     is CheckConnection.Success -> {
                         result.data?.let {

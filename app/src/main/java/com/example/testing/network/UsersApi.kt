@@ -8,6 +8,6 @@ interface UsersApi {
     @GET("api/users")
     suspend fun getUsers(
         @Query("page") page: Int
-    ): List<UsersDTO>
+    ):UsersDTO
 }
 
