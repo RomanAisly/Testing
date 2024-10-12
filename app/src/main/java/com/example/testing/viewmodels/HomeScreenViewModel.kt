@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.testing.model.UsersRepository
 import com.example.testing.model.UsersRepositoryImp
 import com.example.testing.network.CheckConnection
+import com.example.testing.network.dto.Data
 import com.example.testing.network.dto.UsersDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -20,7 +21,7 @@ import javax.inject.Inject
 class HomeScreenViewModel @Inject constructor(private val usersRepositoryImp: UsersRepositoryImp) :
     ViewModel() {
 
-    private val _users = MutableStateFlow<List<UsersDTO>>(emptyList())
+    private val _users = MutableStateFlow<List<Data>>(emptyList())
     val users = _users.asStateFlow()
 
     private val _showErrorToast = Channel<Boolean>()

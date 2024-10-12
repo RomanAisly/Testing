@@ -31,7 +31,7 @@ object AppModule {
             .build()
     }
 
-    @Provides
+    @get:Provides
     @Singleton
     val provideUsersApi: UsersApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
