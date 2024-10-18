@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.testing.ui.components.PhotoPicker2
+import com.example.testing.ui.components.TextField
 
 @Composable
 fun Profile(modifier: Modifier = Modifier) {
@@ -20,7 +21,7 @@ fun Profile(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-       PhotoPicker2()
+       TextField()
     }
 }
 
