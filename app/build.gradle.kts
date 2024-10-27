@@ -94,6 +94,6 @@ dependencies {
 
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.accompanist.swiperefresh)
-    implementation (libs.lottie.compose)
-
+    implementation(libs.lottie.compose)
+    implementation(libs.androidx.material3.windowSizeClass)
 }

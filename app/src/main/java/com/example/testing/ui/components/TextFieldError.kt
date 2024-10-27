@@ -1,14 +1,22 @@
 package com.example.testing.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.testing.R
 import com.example.testing.ui.screens.Profile
 
 @Composable
-fun TextField(modifier: Modifier = Modifier) {
+fun TextFieldError(modifier: Modifier = Modifier) {
 
     var text by remember {
         mutableStateOf("")
@@ -29,6 +37,9 @@ fun TextField(modifier: Modifier = Modifier) {
             }
         },
         isError = isError,
+        leadingIcon = {
+            Image(imageVector = ImageVector.vectorResource(id = R.drawable.youtubevec), contentDescription = "")
+        },
         modifier = modifier
     )
 }
@@ -36,5 +47,5 @@ fun TextField(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 private fun Preview() {
-   Profile()
+    Profile()
 }
