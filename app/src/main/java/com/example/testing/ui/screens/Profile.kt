@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.testing.ui.components.LoginScreen
 import com.example.testing.ui.components.ResizableScreen
 import com.example.testing.ui.components.TextFieldError
+import com.example.testing.ui.components.WebView
 
 @Composable
 fun Profile(modifier: Modifier = Modifier) {
@@ -22,7 +23,7 @@ fun Profile(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        LoginScreen()
+        WebView()
     }
 }
 

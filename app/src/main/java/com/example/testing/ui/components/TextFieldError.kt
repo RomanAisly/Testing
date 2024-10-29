@@ -63,6 +63,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
     var phoneNumber by remember { mutableStateOf("") }
     Column {
         PhoneField(
+            modifier = modifier,
             phoneNumber = phoneNumber,
             mask = "(999) 999 99 99",
             maskNumber = '9',
