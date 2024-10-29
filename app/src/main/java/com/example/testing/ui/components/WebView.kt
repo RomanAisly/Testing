@@ -2,7 +2,10 @@ package com.example.testing.ui.components
 
 import android.graphics.Bitmap
 import android.util.Log
+import android.view.ViewGroup
 import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.kevinnzou.web.AccompanistWebViewClient
 import com.kevinnzou.web.LoadingState
 import com.kevinnzou.web.rememberWebViewNavigator
@@ -138,5 +142,34 @@ fun WebView(modifier: Modifier = Modifier) {
             },
             client = webView
         )
+    }
+}
+
+@Composable
+fun ClassicWebView(modifier: Modifier = Modifier) {
+    var backEnable by remember { mutableStateOf(false) }
+    var webView: WebView? = null
+
+    AndroidView(
+        modifier = modifier,
+        factory = { context ->
+            WebView(context).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+                webViewClient = object : WebViewClient() {
+                    override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                        backEnable = view?.canGoBack() ?: false
+                    }
+                }
+                settings.javaScriptEnabled = true
+                loadUrl("https://google.com")
+            }
+        },
+        update = { webView = it }
+    )
+    BackHandler(enabled = backEnable) {
+        webView?.goBack()
     }
 }
