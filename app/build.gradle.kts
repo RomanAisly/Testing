@@ -97,4 +97,5 @@ dependencies {
     implementation(libs.lottie.compose)
     implementation(libs.androidx.material3.windowSizeClass)
     implementation(libs.compose.webview)
+    implementation(libs.kmp.date.time.picker)
 }

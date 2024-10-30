@@ -2,6 +2,7 @@
 accompanistSwiperefresh = "0.27.0"
 agp = "8.3.2"
 composeWebview = "0.33.6"
+kmpDateTimePicker = "1.0.6"
 kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -47,6 +48,7 @@ androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graph
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+kmp-date-time-picker = { module = "network.chaintech:kmp-date-time-picker", version.ref = "kmpDateTimePicker" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
