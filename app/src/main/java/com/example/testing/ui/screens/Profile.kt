@@ -19,7 +19,7 @@ fun Profile(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
+        HomeScreen()
     }
 }
 

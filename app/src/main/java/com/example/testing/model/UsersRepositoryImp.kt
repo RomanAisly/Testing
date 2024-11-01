@@ -1,5 +1,7 @@
 package com.example.testing.model
 
+import com.example.data.UsersDB
+import com.example.data.toUsersEntity
 import com.example.testing.network.CheckConnection
 import com.example.testing.network.UsersApi
 import com.example.testing.network.dto.Data
@@ -10,7 +12,10 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class UsersRepositoryImp @Inject constructor(private val usersApi: UsersApi) : UsersRepository {
+class UsersRepositoryImp @Inject constructor(
+    private val usersApi: UsersApi,
+    private val dao: UsersDB
+) : UsersRepository {
     override suspend fun getUsers(): Flow<CheckConnection<List<Data>>> {
         return flow {
             val users = try {
@@ -29,6 +34,9 @@ class UsersRepositoryImp @Inject constructor(private val usersApi: UsersApi) : U
                 return@flow
             }
             emit(CheckConnection.Success(data = users.data))
+            dao.dao().insertUsers(users.data.map { it.toUsersEntity() })
+            dao.dao().getUsers()
+
         }
     }
 }

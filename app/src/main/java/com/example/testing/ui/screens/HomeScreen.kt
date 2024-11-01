@@ -48,21 +48,15 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeScreenViewModel = v
             CircularProgressIndicator()
         }
     } else {
-        Column(
+        LazyVerticalGrid(
             modifier = modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)
         ) {
-            LazyVerticalGrid(
-                modifier = modifier.fillMaxSize(),
-                columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
-                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)
-            ) {
-                items(users.size) { index ->
-                    UserItem(user = users[index])
-                }
+            items(users.size) { index ->
+                UserItem(user = users[index])
             }
         }
     }
@@ -79,11 +73,19 @@ fun UserItem(modifier: Modifier = Modifier, user: Data) {
             model = user.avatar,
             contentDescription = "",
             modifier = modifier
-                .size(100.dp)
+                .size(120.dp)
                 .clip(MaterialTheme.shapes.medium)
         )
-        Text(text = user.first_name, textAlign = TextAlign.Center)
-        Text(text = user.last_name, textAlign = TextAlign.Center)
+        Text(
+            text = user.first_name,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = user.last_name,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface
+        )
     }
 
 }

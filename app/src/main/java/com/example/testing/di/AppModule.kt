@@ -1,5 +1,8 @@
 package com.example.testing.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.data.UsersDB
 import com.example.testing.model.UsersRepository
 import com.example.testing.model.UsersRepositoryImp
 import com.example.testing.network.UsersApi
@@ -17,9 +20,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     private const val BASE_URL = "https://reqres.in/"
-
 
     private fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
@@ -42,7 +43,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUsersRepository(api: UsersApi): UsersRepository {
-        return UsersRepositoryImp(api)
+    fun provideUsersRepository(api: UsersApi, db: UsersDB): UsersRepository {
+        return UsersRepositoryImp(api, db)
     }
+
+    @Provides
+    @Singleton
+    fun provideUsersDatabase(app: Application): UsersDB {
+        return Room.databaseBuilder(
+            app,
+            UsersDB::class.java,
+            "users_db"
+        ).build()
+    }
+
+    @Provides
+    fun provideUserDao(db: UsersDB) = db.dao()
 }

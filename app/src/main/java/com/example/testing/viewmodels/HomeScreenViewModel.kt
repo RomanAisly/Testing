@@ -2,11 +2,10 @@ package com.example.testing.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testing.model.UsersRepository
+import com.example.data.UsersDB
 import com.example.testing.model.UsersRepositoryImp
 import com.example.testing.network.CheckConnection
 import com.example.testing.network.dto.Data
-import com.example.testing.network.dto.UsersDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +17,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(private val usersRepositoryImp: UsersRepositoryImp) :
+class HomeScreenViewModel @Inject constructor(
+    private val usersRepositoryImp: UsersRepositoryImp
+) :
     ViewModel() {
 
     private val _users = MutableStateFlow<List<Data>>(emptyList())
