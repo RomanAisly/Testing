@@ -1,4 +1,4 @@
-package com.example.testing.network.dto
+package com.example.testing.data.remote.dto
 
 data class UsersDTO(
     val data: List<Data>,

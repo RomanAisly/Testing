@@ -1,11 +1,11 @@
-package com.example.testing.di
+package com.example.testing.domain.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.data.UsersDB
-import com.example.testing.model.UsersRepository
-import com.example.testing.model.UsersRepositoryImp
-import com.example.testing.network.UsersApi
+import com.example.testing.data.local.UsersDB
+import com.example.testing.data.remote.UsersApi
+import com.example.testing.domain.model.UsersRepository
+import com.example.testing.domain.model.UsersRepositoryImp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,14 +32,16 @@ object AppModule {
             .build()
     }
 
-    @get:Provides
+    @Provides
     @Singleton
-    val provideUsersApi: UsersApi = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(provideOkHttpClient())
-        .build()
-        .create(UsersApi::class.java)
+    fun provideUsersApi(): UsersApi {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(provideOkHttpClient())
+            .build()
+            .create(UsersApi::class.java)
+    }
 
     @Provides
     @Singleton
@@ -58,5 +60,5 @@ object AppModule {
     }
 
     @Provides
-    fun provideUserDao(db: UsersDB) = db.dao()
+    fun provideUserDao(db: UsersDB) = db.dao
 }

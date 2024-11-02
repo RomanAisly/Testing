@@ -25,8 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.example.testing.network.dto.Data
-import com.example.testing.viewmodels.HomeScreenViewModel
+import com.example.testing.domain.model.Users
+import com.example.testing.ui.viewmodels.HomeScreenViewModel
 
 
 @Composable
@@ -63,7 +63,7 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeScreenViewModel = v
 }
 
 @Composable
-fun UserItem(modifier: Modifier = Modifier, user: Data) {
+fun UserItem(modifier: Modifier = Modifier, user: Users) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

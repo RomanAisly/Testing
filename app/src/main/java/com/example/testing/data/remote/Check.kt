@@ -1,4 +1,4 @@
-package com.example.testing.network
+package com.example.testing.data.remote
 
 sealed class CheckConnection<T>(
     val data: T? = null,
@@ -6,4 +6,5 @@ sealed class CheckConnection<T>(
 ) {
     class Success<T>(data: T?) : CheckConnection<T>(data)
     class Error<T>(data: T? = null, message: String?) : CheckConnection<T>(data, message)
+    class Loading<T>(val isLoading: Boolean = true) : CheckConnection<T>()
 }
