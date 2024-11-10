@@ -13,6 +13,8 @@ val Pink40 = Color(0xFF7D5260)
 
 val Pin = Color(0xFFFFA000)
 val Pin2 = Color(0xFFFBC02D)
+val red = Color(0xFFFA0000)
+val blue = Color(0xFF011FF3)
 
 
 val backForBut = Brush.horizontalGradient(listOf(Pin, Pin2))

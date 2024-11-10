@@ -18,6 +18,7 @@ uiGraphicsAndroid = "1.7.4"
 kotlinCompose = "2.0.20"
 room = "2.6.1"
 hilt = "2.51.1"
+hiltNavigation = "1.2.0"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 ksp = "2.0.20-1.0.24"
@@ -49,6 +50,7 @@ androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graph
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation" }
 kmp-date-time-picker = { module = "network.chaintech:kmp-date-time-picker", version.ref = "kmpDateTimePicker" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }

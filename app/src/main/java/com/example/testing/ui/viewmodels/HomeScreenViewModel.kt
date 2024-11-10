@@ -28,14 +28,10 @@ class HomeScreenViewModel @Inject constructor(
     val showErrorToast = _showErrorToast.receiveAsFlow()
 
     init {
-        getUsers(forceFetch = false)
-    }
-
-    fun getUsers(forceFetch: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             usersRepositoryImp.getUsers(
                 page = 1,
-                forceFetch = forceFetch
+                forceFetch = false
             ).collectLatest { result ->
                 when (result) {
                     is CheckConnection.Error -> {
@@ -52,8 +48,11 @@ class HomeScreenViewModel @Inject constructor(
                         }
                     }
                 }
-
             }
         }
     }
+
+
+
+
 }
