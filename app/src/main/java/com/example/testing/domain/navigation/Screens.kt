@@ -2,11 +2,13 @@ package com.example.testing.domain.navigation
 
 import kotlinx.serialization.Serializable
 
-@Serializable
-object HomeNavScreen
+sealed class Screens {
+    @Serializable
+    object HomeScreen : Screens()
 
-@Serializable
-object ProfileNavScreen
+    @Serializable
+    object ProfileScreen : Screens()
 
-@Serializable
-object SettingsNavScreen
+    @Serializable
+    object SettingsScreen : Screens()
+}

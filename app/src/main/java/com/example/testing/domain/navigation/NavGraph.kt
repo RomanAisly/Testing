@@ -28,7 +28,7 @@ fun NavGraph(modifier: Modifier = Modifier, navHostController: NavHostController
                 .padding(innerPadding)
                 .background(MaterialTheme.colorScheme.background),
             navController = navHostController,
-            startDestination = HomeNavScreen,
+            startDestination = Screens.HomeScreen,
             enterTransition = {
                 slideInHorizontally(
                     initialOffsetX = { 900 },
@@ -49,13 +49,13 @@ fun NavGraph(modifier: Modifier = Modifier, navHostController: NavHostController
             }
 
         ) {
-            composable<HomeNavScreen> {
+            composable<Screens.HomeScreen> {
                 HomeScreen()
             }
-            composable<ProfileNavScreen> {
+            composable<Screens.ProfileScreen> {
                 Profile()
             }
-            composable<SettingsNavScreen> {
+            composable<Screens.SettingsScreen> {
                 Settings()
             }
         }

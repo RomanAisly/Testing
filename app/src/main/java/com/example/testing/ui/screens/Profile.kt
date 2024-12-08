@@ -8,8 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.testing.ui.components.CustomTextField
+import com.example.testing.ui.components.TripleOrbitLoadingAnimation
 
 @Composable
 fun Profile(modifier: Modifier = Modifier) {
@@ -21,13 +20,7 @@ fun Profile(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            CustomTextField()
+            TripleOrbitLoadingAnimation()
         }
     }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun Preview() {
-    Profile()
 }
