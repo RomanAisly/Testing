@@ -126,9 +126,3 @@ class PhoneOffsetMapper(private val mask: String, private val maskNumber: Char) 
     override fun transformedToOriginal(offset: Int): Int =
         offset - mask.take(offset).count { it != maskNumber }
 }
-
-@Preview(showBackground = true)
-@Composable
-private fun Preview() {
-    Profile()
-}
