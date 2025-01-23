@@ -55,7 +55,7 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeScreenViewModel = h
             verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)
         ) {
-            items(users.size) { index ->
+            items(users.size, key = { index -> users[index].id }) { index ->
                 UserItem(user = users[index])
             }
         }
