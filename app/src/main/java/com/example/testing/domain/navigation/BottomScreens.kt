@@ -15,14 +15,14 @@ sealed class BottomScreens<T>(@StringRes val label: Int, val icon: Int, val rout
 
     @Serializable
     data object Profile : BottomScreens<Screens.ProfileScreen>(
-        label = R.string.nav_item_favourites,
+        label = R.string.nav_item_profile,
         icon = R.drawable.ic_profile,
         route = Screens.ProfileScreen
     )
 
     @Serializable
     data object Settings : BottomScreens<Screens.SettingsScreen>(
-            label = R.string.nav_item_responses,
+            label = R.string.nav_item_settings,
             icon = R.drawable.ic_settings,
             route = Screens.SettingsScreen
         )

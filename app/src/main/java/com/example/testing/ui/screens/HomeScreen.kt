@@ -89,9 +89,3 @@ fun UserItem(modifier: Modifier = Modifier, user: Users) {
     }
 
 }
-
-@Preview(showBackground = true)
-@Composable
-private fun Preview() {
-
-}

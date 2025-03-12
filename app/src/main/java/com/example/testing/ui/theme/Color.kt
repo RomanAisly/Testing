@@ -12,9 +12,14 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val orange = Color(0xFFFFA000)
-val orangeLight = Color(0xFFFBC02D)
+val lightOrange = Color(0xFFFBC02D)
 val red = Color(0xFFFA0000)
 val blue = Color(0xFF011FF3)
+val lightBlue = Color(0xFF03A9F4)
+val purple = Color(0xFFBF12DC)
+val green = Color(0xFF12DE1A)
+val darkGreen = Color(0xFF39853C)
+val yellow = Color(0xFFF6E22A)
 
 
-val backForBut = Brush.horizontalGradient(listOf(orange, orangeLight))
+val backForBut = Brush.horizontalGradient(listOf(orange, lightOrange))
