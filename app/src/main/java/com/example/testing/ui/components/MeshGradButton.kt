@@ -36,18 +36,12 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-@Preview(showBackground = true)
-@Composable
-private fun Prev() {
-    MeshGradientButton()
-}
 @Composable
 fun MeshGradientButton() {
 
@@ -206,3 +200,4 @@ val Sky500 = Color(0xFF0EA5E9)
 val Sky600 = Color(0xFF0284C7)
 val Slate50 = Color(0xFFF8FAFC)
 val Zinc800 = Color(0xFF27272A)
+val Zinc700 = Color(0xFF404044)
